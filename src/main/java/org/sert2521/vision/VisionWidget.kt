@@ -32,20 +32,16 @@ class VisionWidget : SimpleAnnotatedWidget<Number>() {
 
     @FXML
     private fun initialize() {
-        root.widthProperty().addListener({ _, _, newValue: Number ->
-            run {
-                canvas.width = newValue.toDouble()
-                generateLayover()
-            }
-        })
-        root.heightProperty().addListener({ _, _, newValue: Number ->
-            run {
-                canvas.height = newValue.toDouble()
-                generateLayover()
-            }
-        })
+        root.widthProperty().addListener { _, _, newValue: Number ->
+            canvas.width = newValue.toDouble()
+            generateLayover()
+        }
+        root.heightProperty().addListener { _, _, newValue: Number ->
+            canvas.height = newValue.toDouble()
+            generateLayover()
+        }
 
-        dataProperty().addListener({ _, _, newValue -> generateLayover(newValue.toDouble()) })
+        dataProperty().addListener { _, _, newValue -> generateLayover(newValue.toDouble()) }
 
         generateLayover()
 
@@ -63,10 +59,18 @@ class VisionWidget : SimpleAnnotatedWidget<Number>() {
         gc.strokeLine(canvas.width / 2, 0.0, canvas.width / 2, canvas.height)
         gc.strokeLine(0.0, canvas.height / 2, canvas.width, canvas.height / 2)
 
-        val cubeOffset = if (offset == null) lastOffset else offset / maxOffset.get().absoluteValue * canvas.width
+        val cubeOffset = if (offset == null) {
+            lastOffset
+        } else {
+            offset / maxOffset.get().absoluteValue * canvas.width
+        }
 
         gc.fill = Color.YELLOW
-        gc.fillRect(canvas.width / 2 - cubeDimensions / 2 + cubeOffset, canvas.height / 2 - cubeDimensions / 2, cubeDimensions, cubeDimensions)
+        gc.fillRect(
+                canvas.width / 2 - cubeDimensions / 2 + cubeOffset,
+                canvas.height / 2 - cubeDimensions / 2,
+                cubeDimensions, cubeDimensions
+        )
 
         lastOffset = cubeOffset
     }

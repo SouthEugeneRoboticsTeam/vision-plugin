@@ -3,12 +3,13 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.layout.StackPane?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111"
-           fx:controller="org.sert2521.vision.VisionWidget"
-           fx:id="root"
-           minWidth="256" minHeight="160">
+<StackPane
+    xmlns:fx="http://javafx.com/fxml/1" minHeight="160"
+    minWidth="256"
+    xmlns="http://javafx.com/javafx/8.0.111"
+    fx:controller="org.sert2521.vision.VisionWidget" fx:id="root">
     <padding>
-        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
+        <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
     </padding>
-    <Canvas fx:id="canvas" StackPane.alignment="CENTER"/>
+    <Canvas StackPane.alignment="CENTER" fx:id="canvas" />
 </StackPane>
